@@ -1,0 +1,6 @@
+<%= link_to 'Add Topic', new_topic_path %>
+
+<%= @topics.each do |t| %>
+  <h2><%= t.title %></h2>
+  <p><%= t.description %></p>
+<% end %>
