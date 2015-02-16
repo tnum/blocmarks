@@ -1,7 +1,7 @@
 <%= link_to 'Add Topic', new_topic_path %>
 
 <%= @topics.each do |t| %>
-  <h2><%= t.title %></h2>
+  <h2><%= link_to t.title, topic_path(t.id) %></h2>
   <p><%= t.description %></p>
   <%= link_to "edit", edit_topic_path(t.id) %>
 <% end %>

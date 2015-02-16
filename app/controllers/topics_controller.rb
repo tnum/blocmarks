@@ -20,6 +20,11 @@ class TopicsController < ApplicationController
     end
   end
 
+  def show
+    @topic = Topic.find(params[:id])
+    @bookmarks = @topic.bookmarks
+  end
+
   def edit
     @topic = Topic.find(params[:id])
   end

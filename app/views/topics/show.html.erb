@@ -1,0 +1,11 @@
+<h1><%= @topic.title %></h1>
+
+<div class="new bookmark-link">
+	<%= link_to "New bookmark", new_topic_bookmark_path(@topic.id) %>
+</div>
+
+<div class="bookmarks">
+	<%= @bookmarks.each do |b| %>
+		<span class="bookmark"><%= b.url %></span>
+	<% end %>
+</div>
