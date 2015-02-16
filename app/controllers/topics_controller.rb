@@ -20,6 +20,33 @@ class TopicsController < ApplicationController
     end
   end
 
+  def edit
+    @topic = Topic.find(params[:id])
+  end
+
+  def update
+    @topic = Topic.find(params[:id])
+
+    if @topic.update_attributes(topic_params)
+      redirect_to root_path
+    else
+      flash[:error] = "Error updating, please try again"
+      render :edit
+    end
+  end
+
+  def destroy
+    @topic = Topic.find(params[:id])
+
+    if @topic.destroy
+      flash[:notice] = "Successfully deleted"
+      redirect_to root_path
+    else
+      flash[:error] = "There was an error, please try again"
+      render :edit
+    end
+  end
+
 end
 
 private

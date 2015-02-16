@@ -1,9 +1,3 @@
-<%= form_for @topic do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-  <%= f.label :description %>
-  <%= f.text_field :description %>
+<h1>Add New Topic</h1>
 
-  <%= f.submit 'save' %>
-
-<% end %>
+<%= render partial: 'form', locals: { topic: @topic } %>
