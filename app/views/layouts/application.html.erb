@@ -6,7 +6,28 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+<header>
+	<h1>Blocmarks</h1>
+		<% if current_user %>
+			Welcome <%= current_user.name %>!
+			<%= link_to 'Log out', destroy_user_session_path, :method => :delete %>
+		<% else %>
+			<%= link_to 'Log in', new_user_session_path %>
+			<%= link_to 'Sign up', new_user_registration_path %>
+		<% end %>
+	<nav>
+	</nav>
+</header>
 <body>
+
+<% if flash[:notice] %>
+  <p class="notice"><%= flash[:notice] %></p>
+<% elsif flash[:alert] %>
+  <p class="alert"><%= flash[:alert] %></p>
+<% elsif flash[:error] %>
+  <p class="error"><%= flash[:error] %></p>
+<% end %>
+
 
 <%= yield %>
 

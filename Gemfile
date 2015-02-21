@@ -55,5 +55,5 @@ gem 'spring', '~> 1.3.1',       group: :development
 
 gem 'figaro', '1.0'
 
-ruby "2.2.0"
+gem 'devise'
 
