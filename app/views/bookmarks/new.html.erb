@@ -1,9 +1,3 @@
 <h1>Add New Bookmark</h1>
 
-<%= form_for [@topic, @bookmark] do |f| %>
-	<%= f.label :url %>
-	<%= f.text_field :url %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-	<%= f.submit %>
-<% end %>
+<%= render partial: 'form', locals: { topic: @topic, bookmark: @bookmark } %>

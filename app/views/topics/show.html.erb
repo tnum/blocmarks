@@ -15,7 +15,7 @@
     <% end %>
 
     <% if policy(@topic).update? %>
-      <%= link_to "edit", edit_topic_bookmark_path(@topic.id) %>
+      <%= link_to "edit", edit_topic_bookmark_path(@topic.id, b.id) %>
     <% end %>
 
 	<% end %>

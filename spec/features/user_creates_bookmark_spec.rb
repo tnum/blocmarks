@@ -34,7 +34,7 @@ feature 'User creates bookmark' do
   scenario 'that can be deleted successfully' do
     click_link 'edit'
 
-    within('.bookmark') do
+    within('.edit-bookmark') do
       expect(page).to have_link('delete')
       click_link('delete')
     end

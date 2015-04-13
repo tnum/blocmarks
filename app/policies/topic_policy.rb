@@ -7,7 +7,11 @@ class TopicPolicy < ApplicationPolicy
   end
 
   def update?
-    @topic.user == user
+    user.present? && @topic.user == user
+  end
+
+  def destroy?
+    update?
   end
 
 end
