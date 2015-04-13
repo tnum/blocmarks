@@ -3,7 +3,10 @@ require 'rails_helper'
 feature 'Bookmarks' do
 
 	before do
-		visit('/')
+    @user = create(:user)
+		visit '/'
+    click_log_in
+    fill_login_credentials
   	add_topic
 	end
   

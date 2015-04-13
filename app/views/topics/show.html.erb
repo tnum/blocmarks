@@ -1,11 +1,22 @@
 <h1><%= @topic.title %></h1>
 
 <div class="new bookmark-link">
-	<%= link_to "New bookmark", new_topic_bookmark_path(@topic.id) %>
+  <% if policy(@topic).update? %>
+	 <%= link_to "New bookmark", new_topic_bookmark_path(@topic.id) %>
+  <% end %>
 </div>
 
 <div class="bookmarks">
 	<%= @bookmarks.each do |b| %>
-		<span class="bookmark"><%= b.url %></span>
+    <% if b.title? %>
+      <span class="bookmark"><%= b.title %></span>
+    <% else %>
+		  <span class="bookmark"><%= b.url %></span>
+    <% end %>
+
+    <% if policy(@topic).update? %>
+      <%= link_to "edit", edit_topic_bookmark_path(@topic.id) %>
+    <% end %>
+
 	<% end %>
 </div>

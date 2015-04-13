@@ -1,11 +1,5 @@
-def add_topic
-  click_link 'Add Topic' 
-  within 'form'  do
-    fill_in( 'Title', with: 'Shoes' )
-    fill_in( 'Description', with: 'Shoes of desire' )
-    click_button 'save' 
-  end
-end
+#   =====================   LOG IN   =====================   #
+#   ======================================================   #
 
 def fill_out_credentials
   within 'form' do
@@ -37,5 +31,50 @@ def fill_login_credentials
     fill_in( 'Email', with: @user.email )
     fill_in( 'Password', with: @user.password )
     click_on 'Log in'
+  end
+end
+
+def log_out
+  click_link 'Log out'
+end
+
+#   =========   Dependent methods   =========   #
+
+def user_login
+  click_log_in
+  fill_login_credentials
+end
+
+def user2_login
+  click_log_in
+   within 'form' do
+    fill_in( 'Email', with: @user2.email )
+    fill_in( 'Password', with: @user2.password )
+    click_on 'Log in'
+  end
+end
+
+#   =====================   TOPICS   =====================   #
+#   ======================================================   #
+def add_topic
+  click_link 'Add Topic' 
+  within 'form'  do
+    fill_in( 'Title', with: 'Shoes' )
+    fill_in( 'Description', with: 'Shoes of desire' )
+    click_button 'save' 
+  end
+end
+
+#   =====================  Bookmarks =====================   #
+#   ======================================================   #
+
+def add_bookmark_to_Shoes_topic
+  add_topic
+  click_link 'Shoes'
+  click_link 'New bookmark'
+  within 'form' do
+    fill_in( 'Url', with: 'http://eu.christianlouboutin.com/uk_en/shop/women/so-kate-patent.html' )
+    fill_in('Title', with: 'Christian Louboutins')
+    click_button 'Create Bookmark' 
   end
 end

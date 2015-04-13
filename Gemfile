@@ -18,6 +18,10 @@ group :development, :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'factory_girl_rails', '~> 4.0'
+  gem 'poltergeist'
+  gem 'phantomjs', :require => 'phantomjs/poltergeist'
+  gem 'selenium-webdriver', '~> 2.44.0'
+  gem 'launchy'
 end
 
 # Use SCSS for stylesheets
@@ -56,4 +60,6 @@ gem 'spring', '~> 1.3.1',       group: :development
 gem 'figaro', '1.0'
 
 gem 'devise'
+
+gem 'pundit'
 
