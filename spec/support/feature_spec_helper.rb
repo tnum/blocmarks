@@ -33,10 +33,10 @@ module FeatureSpecHelper
     click_link 'Log in' 
   end
 
-  def fill_login_credentials
+  def fill_login_credentials(user)
     within 'form' do
-      fill_in( 'Email', with: @user.email )
-      fill_in( 'Password', with: @user.password )
+      fill_in( 'Email', with: user.email )
+      fill_in( 'Password', with: user.password )
       click_on 'Log in'
     end
   end
@@ -47,18 +47,9 @@ module FeatureSpecHelper
 
   #   =========   Dependent methods   =========   #
 
-  def user_login
+  def user_login(user)
     click_log_in
-    fill_login_credentials
-  end
-
-  def user2_login
-    click_log_in
-     within 'form' do
-      fill_in( 'Email', with: @user2.email )
-      fill_in( 'Password', with: @user2.password )
-      click_on 'Log in'
-    end
+    fill_login_credentials(user)
   end
 
   #   =====================   TOPICS   =====================   #
@@ -75,7 +66,7 @@ module FeatureSpecHelper
   #   =====================  Bookmarks =====================   #
   #   ======================================================   #
 
-  def add_bookmark_to_Shoes_topic
+  def add_bookmark_to_shoes_topic
     add_topic
     click_link 'Shoes'
     click_link 'New bookmark'

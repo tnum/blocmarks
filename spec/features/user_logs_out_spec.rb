@@ -5,7 +5,7 @@ feature 'User logs out' do
   before do
     @user = create(:user)
     click_log_in
-    fill_login_credentials
+    fill_login_credentials(@user)
   end
 
   scenario 'successfully' do

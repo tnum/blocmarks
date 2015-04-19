@@ -6,8 +6,8 @@ feature 'User creates bookmark' do
     @user  = create(:user)
     @user2 = create(:user, email: 'jane@example.com')
     visit '/'
-    user_login
-    add_bookmark_to_Shoes_topic
+    user_login(@user)
+    add_bookmark_to_shoes_topic
   end
 
   scenario 'successfully' do
@@ -26,7 +26,7 @@ feature 'User creates bookmark' do
 
   scenario 'that can not be updated by another user' do
     log_out
-    user2_login
+    user_login(@user2)
     click_link 'Shoes'
     expect(page).to_not have_link('edit')
   end
