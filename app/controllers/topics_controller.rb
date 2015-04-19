@@ -57,10 +57,10 @@ class TopicsController < ApplicationController
     end
   end
 
-end
+  private
 
-private
+  def topic_params
+    params.require(:topic).permit(:title, :description)
+  end
 
-def topic_params
-  params.require(:topic).permit(:title, :description)
 end
