@@ -8,6 +8,7 @@ class IncomingController < ApplicationController
 
     if @user.present?
       @topic = @user.find_or_create_by(title: params[:subject], user_id: @user)
+      @topic.save
       # @topic = @user.topics.find_or_create_by(title: params[:subject], user_id: @user)
       # @url = params["body-plain"]
     end
