@@ -6,12 +6,12 @@ class IncomingController < ApplicationController
 
     @user = User.find_by(email: params[:sender])
 
-    if @user.present?
+    # if @user.present?
       @topic = Topic.new(user_id: @user.id, title: params[:subject])
       @topic.save
       # @topic = @user.topics.find_or_create_by(title: params[:subject], user_id: @user)
       # @url = params["body-plain"]
-    end
+    # end
     
 
     # if @user.present?
