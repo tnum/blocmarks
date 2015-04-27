@@ -7,21 +7,14 @@ class IncomingController < ApplicationController
     @user = User.find_by(email: params[:sender])
 
     if @user.present?
-      @topic = Topic.new(user_id: @user.id, title: params[:subject])
+      @topic = Topic.find_or_create_by(user_id: @user.id, title: params[:subject])
       @topic.save
-      # @topic = @user.topics.find_or_create_by(title: params[:subject], user_id: @user)
-      # @url = params["body-plain"]
+      @url = params["body-plain"]
+      @bookmark = Bookmark.create(topic: @topic, url: @url)
+      @bookmark.save
     end
-    
-
-    # if @user.present?
-    #  @bookmark = Bookmark.build(topic: @topic, url: @url)
-    # end
 
     head 200
-  end
-
-end
   end
 
 end
