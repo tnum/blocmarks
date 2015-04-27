@@ -4,7 +4,9 @@ class IncomingController < ApplicationController
   def create
     puts "INCOMING PARAMS HERE: #{params}"
 
-    @user = User.find_by(email: params[:sender])
+    #@user = User.find_by(email: params[:sender])
+
+    @user = User.first
     @url = params["body-plain"]
 
     if @user.present?
@@ -12,12 +14,8 @@ class IncomingController < ApplicationController
       @bookmark = Bookmark.new(topic: @topic, url: @url)
     end
 
-    # @topic.bookmarks.create(url: @url)
+    render :nothing => true
 
-    # You put the message-splitting and business
-    # magic here. 
-
-    # Assuming all went well. 
     head 200
   end
 
