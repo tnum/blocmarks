@@ -12,9 +12,18 @@ class IncomingController < ApplicationController
       @url = params["body-plain"]
       @bookmark = Bookmark.create(topic: @topic, url: @url)
       @bookmark.save
+    else 
+      @user = User.new(name: your_name, email: @user.email, password: password, password_confirmation: password)
     end
 
     head 200
   end
+
+  private 
+
+  def generate_password
+    password = User.generate_token('password')
+  end
+
 
 end
