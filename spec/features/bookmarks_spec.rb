@@ -6,7 +6,7 @@ feature 'Bookmarks' do
     @user = create(:user)
 		visit '/'
     click_log_in
-    fill_login_credentials
+    fill_login_credentials(@user)
   	add_topic
 	end
   

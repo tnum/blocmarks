@@ -9,7 +9,7 @@ feature 'User creates topics' do
   end
 
   scenario 'successfully' do
-    user_login
+    user_login(@user)
     add_topic
     expect(page).to have_content('Shoes')
   end
@@ -19,24 +19,24 @@ feature 'User creates topics' do
   end
 
   scenario 'that can be updated successfully' do
-    user_login
+    user_login(@user)
     add_topic
     expect(page).to have_content('edit')
   end
 
   scenario 'that can not be edited by other users' do
-    user_login
+    user_login(@user)
     add_topic
     expect(page).to have_link('edit')
     log_out
 
-    user2_login
+    user_login(@user2)
     expect(page).to have_content('Shoes')
     expect(page).to_not have_link('edit')
   end
 
   scenario 'that can be deleted successfully', js: true do
-    user_login
+    user_login(@user)
     add_topic
     expect(page).to have_content('Shoes')
 
@@ -53,13 +53,13 @@ feature 'User creates topics' do
   end
 
   scenario 'that can not be deleted by another user' do
-    user_login
+    user_login(@user)
     add_topic
     click_link 'edit'
     expect(page).to have_link('delete')
     log_out
 
-    user2_login
+    user_login(@user2)
   end
 
 end
