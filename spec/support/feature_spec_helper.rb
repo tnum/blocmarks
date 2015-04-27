@@ -1,10 +1,5 @@
 module FeatureSpecHelper
 
-  RSpec.configure do |config|
-    # Configure Rspec to include the module in feature specs:
-    config.include FeatureSpecHelper, type: :feature
-  end
-
   #   =====================   LOG IN   =====================   #
   #   ======================================================   #
 
@@ -77,4 +72,9 @@ module FeatureSpecHelper
     end
   end
 
+end
+
+RSpec.configure do |config|
+  # Configure Rspec to include the module in feature specs:
+  config.include FeatureSpecHelper, type: :feature
 end
