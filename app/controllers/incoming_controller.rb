@@ -12,15 +12,7 @@ class IncomingController < ApplicationController
       @url = params["body-plain"]
       @bookmark = Bookmark.create(topic: @topic, url: @url)
       @bookmark.save
-      #@topic = Topic.new(user_id: @user.id, title: params[:subject])
-      # @topic = @user.topics.find_or_create_by(title: params[:subject], user_id: @user)
-      # @url = params["body-plain"]
     end
-    
-
-    # if @user.present?
-    #  @bookmark = Bookmark.build(topic: @topic, url: @url)
-    # end
 
     head 200
   end
