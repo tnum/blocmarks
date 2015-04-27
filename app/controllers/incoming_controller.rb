@@ -4,17 +4,18 @@ class IncomingController < ApplicationController
   def create
     puts "INCOMING PARAMS HERE: #{params}"
 
-    #@user = User.find_by(email: params[:sender])
-
-    @user = User.first
-    @url = params["body-plain"]
+    @user = User.find_by(email: params[:sender])
 
     if @user.present?
-      @topic = @user.topics.find_or_create_by(title: params[:subject], user: @user)
-      @bookmark = Bookmark.new(topic: @topic, url: @url)
+      @topic = @user.find_or_create_by(title: params[:subject], user_id: @user)
+      # @topic = @user.topics.find_or_create_by(title: params[:subject], user_id: @user)
+      # @url = params["body-plain"]
     end
+    
 
-    render :nothing => true
+    # if @user.present?
+    #  @bookmark = Bookmark.build(topic: @topic, url: @url)
+    # end
 
     head 200
   end
