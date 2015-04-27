@@ -9,7 +9,9 @@ class IncomingController < ApplicationController
 
     @url = params["body-plain"]
 
-    @topic.bookmarks.create(url: @url)
+    @bookmark = Bookmark.create(url: @url)
+
+    # @topic.bookmarks.create(url: @url)
 
     # You put the message-splitting and business
     # magic here. 
