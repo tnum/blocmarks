@@ -14,4 +14,6 @@ class IncomingController < ApplicationController
     head :ok
   end
 
+  private 
+
 end
