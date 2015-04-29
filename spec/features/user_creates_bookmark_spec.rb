@@ -32,6 +32,8 @@ feature 'User creates bookmark' do
   end
 
   scenario 'that can be deleted successfully' do
+    expect(page).to have_content('Your bookmark has been saved successfully')
+    expect(page).to have_content('Christian Louboutins')
     click_link 'edit'
 
     within('.edit-bookmark') do

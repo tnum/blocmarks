@@ -4,6 +4,11 @@ class TopicsController < ApplicationController
     @topics = Topic.all
   end
 
+  def show
+    @topic = Topic.find(params[:id])
+    @bookmarks = @topic.bookmarks
+  end
+
   def new
     @topic = Topic.new
     authorize @topic
@@ -20,11 +25,6 @@ class TopicsController < ApplicationController
       flash[:error] = "Try again"
       redirect_to new_wiki_path
     end
-  end
-
-  def show
-    @topic = Topic.find(params[:id])
-    @bookmarks = @topic.bookmarks
   end
 
   def edit

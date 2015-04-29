@@ -6,4 +6,8 @@ class BookmarkPolicy < ApplicationPolicy
     @bookmark = bookmark
   end
 
+  def update?
+    user.present? && @bookmark.user == user
+  end
+
 end
