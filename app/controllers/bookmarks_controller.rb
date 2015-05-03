@@ -14,43 +14,43 @@ class BookmarksController < ApplicationController
 	def create
 		@topic = Topic.find(params[:topic_id])
 		@bookmark = current_user.bookmarks.new(bookmark_params)
-		@bookmark.topic = @topic
 		authorize @bookmark
 
 		if @bookmark.save
 			flash[:notice] = "Your bookmark has been saved successfully"
-			redirect_to topic_path(@topic.id)
+			redirect_to topic_path(@topic)
 		else
 			flash[:error] = "There was an error, please try again"
 			render :new
 		end
+
 	end
 
 	def edit
 		@bookmark = Bookmark.find(params[:id])
 	  @topic = Topic.find(params[:topic_id])
-	  authorize @bookmark
+	  authorize @topic
 	end
 
   def update
     @bookmark = Bookmark.find(params[:id])
     @topic = Topic.find(params[:topic_id])
-    @user = Bookmark.find(params[:user_id])
-    authorize @bookmark
+		@user = @bookmark.user
+		authorize @topic
 
     if @bookmark.update_attributes(bookmark_params)
       flash[:notice] = "Your bookmark has been sucessfully updated"
-      redirect_to topic_path(@topic.id)
+      redirect_to topic_path(@topic)
     else
       flash[:error] = "Error updating, please try again"
       render :edit
     end
   end
 
-	def destroy
+  def destroy
     @bookmark = Bookmark.find(params[:id])
     @topic = Topic.find(params[:topic_id])
-    authorize @bookmark
+    authorize @topic
 
     if @bookmark.destroy
       flash[:notice] = "Successfully deleted"
