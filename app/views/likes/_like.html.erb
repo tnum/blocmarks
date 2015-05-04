@@ -1,0 +1,15 @@
+<% if like = current_user.liked(bookmark) %>
+  <div id="unlike">
+    <p>Liked it</p>
+    <%= link_to topic_bookmark_like_path(@topic.id, bookmark.id, like.id), class: 'btn btn-primary', method: :delete do %>
+      <i class="glyphicon glyphicon-star-empty"> </i>&nbsp; Unlike
+    <% end %>
+  </div>
+<% else %>
+  <div id="like">
+    <p>Like me ples!</p>
+    <%= link_to topic_bookmark_likes_path(@topic.id, bookmark.id), class: 'btn btn-primary', method: :post do %>
+      <i class="glyphicon glyphicon-star"> </i>&nbsp; Like
+    <% end %>
+  </div>
+<% end %>

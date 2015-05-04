@@ -13,6 +13,26 @@
     <% else %>
 		  <span class="bookmark"><%= b.url %></span>
     <% end %>
+    <% if current_user %>
+      <div class="likes">
+        <%= b.likes.count %>
+        <% if like = current_user.liked(b) %>
+          <div id="unlike">
+            <p>Liked it</p>
+            <%= link_to topic_bookmark_like_path(@topic.id, b.id, like.id), class: 'btn btn-primary', method: :delete do %>
+              <i class="glyphicon glyphicon-star-empty"> </i>&nbsp; Unlike
+            <% end %> 
+          </div>
+        <% else %>
+          <div id="like">
+            <p>Like me ples!</p>
+            <%= link_to topic_bookmark_likes_path(@topic.id, b.id), class: 'btn btn-primary', method: :post do %>
+              <i class="glyphicon glyphicon-star"> </i>&nbsp; Like
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
 
     <% if policy(@topic).update? %>
       <%= link_to "edit", edit_topic_bookmark_path(@topic.id, b.id) %>
