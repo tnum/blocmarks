@@ -12,8 +12,8 @@ class BookmarksController < ApplicationController
 	end
 
 	def create
-		@topic = Topic.find(params[:topic_id])
-		@bookmark = current_user.bookmarks.new(bookmark_params)
+		@topic = current_user.topics.find(params[:topic_id])
+		@bookmark = @topic.bookmarks.new(bookmark_params)
 		authorize @bookmark
 
 		if @bookmark.save
@@ -29,7 +29,8 @@ class BookmarksController < ApplicationController
 	def edit
 		@bookmark = Bookmark.find(params[:id])
 	  @topic = Topic.find(params[:topic_id])
-	  authorize @topic
+	  # authorize @topic
+	  authorize @bookmark
 	end
 
   def update
