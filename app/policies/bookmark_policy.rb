@@ -1,5 +1,5 @@
 class BookmarkPolicy < ApplicationPolicy
-	attr_reader :user, :bookmark
+	attr_reader :user, :bookmark, :topic
 
   def initialize(user, bookmark)
     @user = user
