@@ -13,28 +13,27 @@ feature 'Bookmarks liked' do
   scenario 'by authenticated users successfully' do
     log_out
     user_login(@user2)
-    visit '/topics/1'
-    within('.likes') do
-      find("#like").click
-    end
+    like_bookmark
+
     within('.bookmarks') do
       expect(page).to have_content('1')
     end
+
   end
 
   scenario 'unsuccessfully on a bookmark by the same user twice' do
     log_out
     user_login(@user2)
-    visit '/topics/1'
-    within('.likes') do
-      find("#like").click
-    end
+    like_bookmark
+
     within('.bookmarks') do
       expect(page).to have_content('1')
     end
+
     within('.likes') do
       expect(page).to_not have_content("#like")
     end
+    
   end
 
   scenario 'by a user that is not logged in unsuccessfully' do

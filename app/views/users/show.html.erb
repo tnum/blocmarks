@@ -1,0 +1,10 @@
+<h1><%= @user.name %></h1>
+
+<%= @user_bookmarks.each do |b| %>
+  <%= b.url %>
+<% end %>
+
+<%= @likes.each do |l| %>
+  <%= l.id %>
+  <%= l.bookmark_id %>
+<% end %>

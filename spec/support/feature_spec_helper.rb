@@ -72,6 +72,13 @@ module FeatureSpecHelper
     end
   end
 
+  def like_bookmark
+    visit '/topics/1'
+    within('.likes') do
+      find("#like").click
+    end
+  end
+
 end
 
 RSpec.configure do |config|
